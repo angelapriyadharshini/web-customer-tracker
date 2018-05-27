@@ -1,4 +1,4 @@
-package com.app.onlinetest.dao;
+package com.app.springdemo.dao;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 // import org.springframework.transaction.annotation.Transactional;
 
-import com.app.onlinetest.entity.Customer;
+import com.app.springdemo.entity.Customer;
 
 @Repository
 public class CustomerDAOImpl implements CustomerDAO {
@@ -41,7 +41,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// save the customer ... finally done
-		currentSession.save(theCustomer);
+		currentSession.saveOrUpdate(theCustomer);
 		
 	}
 
@@ -55,6 +55,19 @@ public class CustomerDAOImpl implements CustomerDAO {
 		Customer theCustomer = currentSession.get(Customer.class,theId);
 		
 		return theCustomer;
+	}
+
+	@Override
+	public void deleteCustomer(int theId) {
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// delete object with primary key
+		Query theQuery = 
+				currentSession.createQuery("delete from Customer where id=:customerId");
+		theQuery.setParameter("customerId", theId);
+		
+		theQuery.executeUpdate();
 	}
 
 }

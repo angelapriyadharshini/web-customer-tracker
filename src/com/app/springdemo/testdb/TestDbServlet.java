@@ -1,4 +1,4 @@
-package com.app.onlinetest.testdb;
+package com.app.springdemo.testdb;
 
 import java.io.IOException;
 import java.io.PrintWriter;

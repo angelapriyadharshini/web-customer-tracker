@@ -1,13 +1,16 @@
-package com.app.onlinetest.dao;
+package com.app.springdemo.service;
 
 import java.util.List;
 
-import com.app.onlinetest.entity.Customer;
+import com.app.springdemo.entity.Customer;
 
-public interface CustomerDAO {
+public interface CustomerService {
+
 	public List<Customer> getCustomers();
 
 	public void saveCustomer(Customer theCustomer);
 
 	public Customer getCustomer(int theId);
+
+	public void deleteCustomer(int theId);
 }

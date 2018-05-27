@@ -1,4 +1,4 @@
-package com.app.onlinetest.service;
+package com.app.springdemo.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.app.onlinetest.dao.CustomerDAO;
-import com.app.onlinetest.entity.Customer;
+import com.app.springdemo.dao.CustomerDAO;
+import com.app.springdemo.entity.Customer;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -34,6 +34,13 @@ public class CustomerServiceImpl implements CustomerService {
 	@Transactional
 	public Customer getCustomer(int theId) {
 		return customerDAO.getCustomer(theId);
+	}
+
+	@Override
+	@Transactional
+	public void deleteCustomer(int theId) {
+		customerDAO.deleteCustomer(theId);
+		
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.app.onlinetest.controller;
+package com.app.springdemo.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.app.onlinetest.entity.Customer;
-import com.app.onlinetest.service.CustomerService;
+import com.app.springdemo.entity.Customer;
+import com.app.springdemo.service.CustomerService;
 
 @Controller
 @RequestMapping("/customer")
@@ -68,7 +68,13 @@ public class CustomerController {
 		return "customer-form";
 	}
 	
-	
+	@GetMapping("/delete")
+	public String deleteCustomer(@RequestParam("customerId") int theId) {
+		// delete the customer
+		customerService.deleteCustomer(theId);
+		
+		return "redirect:/customer/list";
+	}
 	
 	
 	
